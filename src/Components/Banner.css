@@ -1,0 +1,53 @@
+.banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(45deg, #ff4081, #3f51b5);
+    padding: 20px;
+    border-radius: 0;
+    text-align: center;
+    color: #fff; /* White text color for visibility */
+    z-index: 1000; /* Ensure the banner appears above other content */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Optional: Add shadow for better visibility */
+  }
+  
+  .banner p {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  
+  .banner a {
+    color: #ffffff; /* White link color */
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block; /* Optional: Ensure the link displays as a block for padding */
+    margin-top: 10px;
+  }
+  
+  .banner a:hover {
+    text-decoration: underline;
+    color: #ffeb3b; /* Optional: Change color on hover for better interaction */
+  }
+  
+  /* Add responsiveness */
+  @media (max-width: 768px) {
+    .banner p {
+      font-size: 1.2rem;
+    }
+  
+    .banner a {
+      font-size: 1.2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .banner p {
+      font-size: 1rem;
+    }
+  
+    .banner a {
+      font-size: 1rem;
+    }
+  }
+  
