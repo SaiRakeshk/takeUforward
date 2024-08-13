@@ -1,39 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import './Banner.css';
+import React from 'react';
 
 const Banner = ({ content, timer, link, onHide }) => {
-  const [countdown, setCountdown] = useState(timer);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCountdown(prevCountdown => {
-        if (prevCountdown <= 1) {
-          clearInterval(interval);
-          onHide(); // Hide banner when countdown ends
-          return 0;
-        }
-        return prevCountdown - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [timer, onHide]);
+  // Check if the link is absolute, if not prepend "http://"
+  const ensureAbsoluteURL = (url) => {
+    if (!/^https?:\/\//i.test(url)) {
+      return `http://${url}`;
+    }
+    return url;
+  };
 
   return (
     <div className="banner">
       <p>{content}</p>
-      <a href={link} target="_blank" rel="noopener noreferrer">Learn More</a>
-      <p>Time remaining: {countdown}s</p>
+      <a
+        href={ensureAbsoluteURL(link)}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="banner-link"
+      >
+        Learn More
+      </a>
+      <button onClick={onHide}>Hide Banner</button>
     </div>
   );
-};
-
-Banner.propTypes = {
-  content: PropTypes.string.isRequired,
-  timer: PropTypes.number.isRequired,
-  link: PropTypes.string.isRequired,
-  onHide: PropTypes.func.isRequired,
 };
 
 export default Banner;
